@@ -1,32 +1,8 @@
 <?php
 
-use Faker\Factory as Faker;
 
 class FileExplorerTest extends TestCase
 {
-    private $times = 1;
-
-    private $fake;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->fake = Faker::create();
-    }
-
-    public function tearDown()
-    {
-        parent::tearDown();
-
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
-        $files = scandir($directory);
-
-        for($i = 2; $i < count($files); $i++) {
-            unlink($directory . DIRECTORY_SEPARATOR . $files[$i]);
-        }
-
-    }
 
     /** @test */
     public function it_is_instantiable()
@@ -84,35 +60,5 @@ class FileExplorerTest extends TestCase
 
 
         $this->assertEquals(3, count($files));
-    }
-
-    private function times($times)
-    {
-        $this->times = $times;
-
-        return $this;
-    }
-
-    private function createFile($extension = null)
-    {
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
-        $ext = $extension ?: '.txt';
-
-        while($this->times --) {
-            file_put_contents(
-                $directory . $this->fake->word . $ext,
-                $this->fake->sentence(5)
-            );
-        }
-
-        $files = scandir($directory);
-        unset($files[0], $files[1]);
-
-        return $files;
-    }
-
-    private function baseDirectory()
-    {
-        return getcwd();
     }
 }
