@@ -1,0 +1,28 @@
+{
+    "name": "vjrngn/file-explorer",
+    "description": "A simple API to browse directories with PHP",
+    "authors": [
+        {
+            "name": "Vijay Rangan",
+            "email": "vijay.rangan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "classmap": [
+            "src"
+        ],
+        "psr-4": {
+            "FileExplorer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.5",
+        "phpunit/phpunit": "~4.0"
+    }
+}
