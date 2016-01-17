@@ -62,6 +62,10 @@ class TestCase extends PHPUnit_Framework_TestCase {
 
     public function stubsDirectory()
     {
+        if(!file_exists( $this->baseDirectory() . '/tests/Stubs/' )) {
+            mkdir( $this->baseDirectory() . '/tests/Stubs/' );
+        }
+        
         return $this->baseDirectory() . '/tests/Stubs/';
     }
 }
