@@ -1,4 +1,3 @@
 /vendor
-tests/Unit/Stubs/**/*
 composer.lock
 .DS_Store
