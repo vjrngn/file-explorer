@@ -21,7 +21,7 @@ class TestCase extends PHPUnit_Framework_TestCase {
     {
         parent::tearDown();
 
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
+        $directory = $this->stubsDirectory();
         $files = scandir($directory);
 
         for($i = 2; $i < count($files); $i++) {
@@ -39,7 +39,7 @@ class TestCase extends PHPUnit_Framework_TestCase {
 
     public function createFile($extension = null)
     {
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
+        $directory = $this->stubsDirectory();
         $ext = $extension ?: '.txt';
 
         while($this->times --) {
@@ -58,5 +58,10 @@ class TestCase extends PHPUnit_Framework_TestCase {
     public function baseDirectory()
     {
         return getcwd();
+    }
+
+    public function stubsDirectory()
+    {
+        return $this->baseDirectory() . '/tests/Stubs/';
     }
 }

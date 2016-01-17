@@ -15,7 +15,7 @@ class FileExplorerTest extends TestCase
     public function it_lists_the_files_available_in_a_directory()
     {
         $this->times(2)->createFile();
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
+        $directory = $this->stubsDirectory();
 
         $files = ( new FileExplorer\FileExplorer )->listFiles($directory);
 
@@ -25,7 +25,7 @@ class FileExplorerTest extends TestCase
     /** @test */
     public function it_accepts_the_directory_name_via_the_constructor()
     {
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
+        $directory = $this->stubsDirectory();
         $filesClass = new FileExplorer\FileExplorer($directory);
 
         $this->assertEquals(
@@ -37,7 +37,7 @@ class FileExplorerTest extends TestCase
     /** @test */
     public function it_filters_files_in_a_directory_based_on_the_extension()
     {
-        $directory = $this->baseDirectory() . '/tests/Unit/Stubs/';
+        $directory = $this->stubsDirectory();
         $excelFiles = $this->times(3)->createFile('.xlsx');
         $regularFiles = $this->times(2)->createFile();
 
@@ -54,7 +54,7 @@ class FileExplorerTest extends TestCase
         $this->times(3)->createFile('.xlsx');
         $filesClass = new FileExplorer\FileExplorer();
 
-        $files = $filesClass->listFiles($this->baseDirectory() . '/tests/Unit/Stubs/')
+        $files = $filesClass->listFiles($this->stubsDirectory())
                             ->filterByExtension('xlsx');
 
 
