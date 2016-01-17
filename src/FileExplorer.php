@@ -4,7 +4,7 @@ class FileExplorer
 {
     public $directory;
 
-    private $files = [];
+    public $files = [];
 
     public function __construct($directory = null)
     {
